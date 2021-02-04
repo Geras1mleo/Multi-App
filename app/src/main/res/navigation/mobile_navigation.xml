@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_todo">
+
+    <fragment
+        android:id="@+id/navigation_todo"
+        android:name="my.bestapp.multiapp.ui.todo.ToDoFragment"
+        android:label="@string/title_todolist"
+        tools:layout="@layout/fragment_todo">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_reaction" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_reaction"
+        android:name="my.bestapp.multiapp.ui.reaction.ReactionFragment"
+        android:label="@string/title_reactiontest"
+        tools:layout="@layout/fragment_reaction">
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="my.bestapp.multiapp.ui.notifications.NotificationsFragment"
+        android:label="@string/title_comingsoon"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>

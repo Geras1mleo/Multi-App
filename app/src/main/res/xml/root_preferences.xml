@@ -1,0 +1,33 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/title_todolist">
+
+        <Preference
+            android:key="folders_delete"
+            app:title="@string/delete_folders" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/reaction_test_preferences">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="vibration_switch"
+            android:title="@string/vibration" />
+        <ListPreference
+            android:entries="@array/vibration_list_preferences"
+            android:entryValues="@array/vibration_list_values"
+            android:key="list_vibrationtime"
+            android:title="@string/vibration_time"
+            app:defaultValue="false"
+            app:dependency="vibration_switch"
+            app:persistent="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Info">
+
+        <Preference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:key="folders_delete"
+            app:title="@string/made_by" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

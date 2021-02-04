@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_todo"
+        android:icon="@drawable/ic_todolist"
+        android:title="@string/title_todolist" />
+
+    <item
+        android:id="@+id/navigation_reaction"
+        android:icon="@drawable/ic_flash_24"
+        android:title="@string/title_reactiontest" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_code_24"
+        android:title="@string/title_comingsoon" />
+
+</menu>
