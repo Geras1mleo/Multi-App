@@ -102,7 +102,7 @@ public class FoldersDialog{
             main.folderNames.add(newFolderName);
 
             for (int i = 0; i < main.views.size(); ) main.deleteItem(0);
-            main.OpenFolder(main.folderNames.indexOf(newFolderName));
+            main.openFolder(main.folderNames.indexOf(newFolderName));
 
             dialog.dismiss();
             chooseFolderDialog.cancel();
@@ -115,7 +115,7 @@ public class FoldersDialog{
             if (main.tableIndex != folderButtons.indexOf(v)){
 
                 for (int i = 0; i < main.views.size();) main.deleteItem(0);
-                main.OpenFolder(folderButtons.indexOf(v));
+                main.openFolder(folderButtons.indexOf(v));
 
                 chooseFolderDialog.dismiss();
             }

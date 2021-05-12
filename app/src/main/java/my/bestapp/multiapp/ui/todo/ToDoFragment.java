@@ -45,7 +45,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ToDoFragment extends Fragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, View.OnFocusChangeListener {
+import static android.view.View.*;
+
+public class ToDoFragment extends Fragment implements OnClickListener, CompoundButton.OnCheckedChangeListener, OnFocusChangeListener {
     public Activity activity;
     public DatabaseHelper db;
     private View mainView;
@@ -80,6 +82,7 @@ public class ToDoFragment extends Fragment implements View.OnClickListener, Comp
                              ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_todo, container, false);
 
+        // Uncomment to clear database and folders/tables
         /*getActivity().deleteDatabase(DatabaseHelper.DATABASE_NAME);
         getActivity().getSharedPreferences("Folders", Context.MODE_PRIVATE).edit().clear().commit();
         getActivity().getSharedPreferences("FoldersCount", Context.MODE_PRIVATE).edit().clear().commit();
@@ -90,7 +93,7 @@ public class ToDoFragment extends Fragment implements View.OnClickListener, Comp
 
         getFolders(); //From Shared Preferences
         //Always opening Main Folder at the start
-        OpenFolder(folderNames.indexOf("Main Folder"));
+        openFolder(folderNames.indexOf("Main Folder"));
 
         return mainView;
     }
@@ -120,7 +123,7 @@ public class ToDoFragment extends Fragment implements View.OnClickListener, Comp
 
     private void setNormalUIFlags() {
         ((AppCompatActivity)activity).getSupportActionBar().show();
-        activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+        activity.getWindow().getDecorView().setSystemUiVisibility(SYSTEM_UI_FLAG_VISIBLE);
     }
 
     private void getFolders() {
@@ -132,7 +135,7 @@ public class ToDoFragment extends Fragment implements View.OnClickListener, Comp
         }
     }
 
-    public void OpenFolder(int folderIndex) {
+    public void openFolder(int folderIndex) {
         toReturn = true;
         chooseFolderButton.setText(folderNames.get(folderIndex));
         tableIndex = folderIndex;

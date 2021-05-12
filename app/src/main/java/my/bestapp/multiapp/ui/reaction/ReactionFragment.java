@@ -60,12 +60,10 @@ public class ReactionFragment extends Fragment implements View.OnTouchListener {
     }
     private void vibrate(){
         if (vibrator!= null && isVibrationEnabled){
+            // 69 is value for non-stop vibrating
             if (vibrateTime == 69){
                 toVibrate = true;
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() { while (toVibrate) vibrator.vibrate(50);}
-                }).start();
+                new Thread(() -> { while (toVibrate) vibrator.vibrate(50);}).start();
             }
             else vibrator.vibrate(vibrateTime);
         }
@@ -82,6 +80,7 @@ public class ReactionFragment extends Fragment implements View.OnTouchListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         activity = getActivity();
         ((AppCompatActivity)activity).getSupportActionBar().hide();
+
         activity.getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_FULLSCREEN |
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
@@ -100,6 +99,7 @@ public class ReactionFragment extends Fragment implements View.OnTouchListener {
 
     private void setHighScore(long reactTime) {
         long highScore = pref.getLong("HighScore", 3600000);
+
         if (reactTime > highScore ||  reactTime == -1 && highScore != 3600000)
             textHigh.setText("Highest Score: " + highScore + "ms");
 
@@ -107,7 +107,6 @@ public class ReactionFragment extends Fragment implements View.OnTouchListener {
             textHigh.setText("Highest score: " + reactTime + "ms");
             pref.edit().putLong("HighScore", reactTime).apply();
         }
-
         else textHigh.setText("Highest Score: /");
     }
 
